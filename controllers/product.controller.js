@@ -1,5 +1,5 @@
 const { Product } = require('../database');
-const bcrypt = require('bcryptjs');
+
 module.exports = {
   async indexAll(req, res) {
     const adminExist = await Product.findOne({ where: { userType: 'admin' } });
@@ -9,10 +9,6 @@ module.exports = {
       });
     }
     return res.json(await Product.findAll());
-  },
-
-  async indexOne(req, res) {
-
   },
 
   async registerProduct(req, res) {
