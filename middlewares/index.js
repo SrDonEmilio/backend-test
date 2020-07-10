@@ -1,10 +1,12 @@
 require('dotenv').config();
 
+const { User } = require('../database');
+
 const jwt = require('jwt-simple');
 const moment = require('moment');
 
 const checkAuthHeaders = (req, res, next) => {
-  if (!req.headers['user-token'] && !red.header['UserId']) {
+  if (!req.headers['user-token'] && !red.header['userid']) {
     return res.sendStatus(401);
   }
 
@@ -25,5 +27,5 @@ const checkAuthHeaders = (req, res, next) => {
 };
 
 module.exports = {
-    checkAuthHeaders : checkAuthHeaders
-}
+  checkAuthHeaders: checkAuthHeaders
+};

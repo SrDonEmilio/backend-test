@@ -210,8 +210,18 @@ You need define `username` and `email` with their `env` variables `ADMIN_USERNAM
 
 
 
-
 #### Orders
+
+**Get orders**
+
+- Request
+
+  ```
+  GET /api/order
+  ```
+
+  - Header Parameters
+    - `UserId:string`  (required)
 
 **Register an order**
 
