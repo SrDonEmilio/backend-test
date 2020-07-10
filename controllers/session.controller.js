@@ -36,7 +36,7 @@ module.exports = {
       if (matchPassword) {
         res.json({ sucess: createToken(user) });
       } else {
-        res.json({ error: 'User or Password incorrect' });
+        res.json({ error: 'User or password incorrect' });
       }
     } else {
       res.json({ error: 'User or password incorrect' });

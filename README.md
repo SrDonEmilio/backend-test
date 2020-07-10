@@ -60,7 +60,9 @@ Example:
 
 ### API
 
-#### Login
+#### Users
+
+**Admin**
 
 To interact with api, you need an admin user. You can get it this way:
 
@@ -95,6 +97,76 @@ You need define `username` and `email` with their `env` variables `ADMIN_USERNAM
 
 
 
+#### Login
+
+- Request
+
+  ```
+  POST /api/session
+  ```
+
+  - Body Params
+    - `username:string(username or email)` (required)
+    - `password:string` (required)
+
+- Answers
+
+| Code     | Answer                       |
+| -------- | ---------------------------- |
+| `200 OK` | JSON WEB TOKEN               |
+| `200 OK` | 'User or password incorrect' |
+
+
+
+#### Products
+
+**Register a product**
+
+- Request
+
+  ```
+  POST /api/product
+  ```
+
+  - Body Parameters
+    - `title:string` (required)
+    - `description:string ` (optional)
+    - `price:integer` (required) 
+
+- Answers
+
+  | Code     | Answer |
+  | -------- | ------ |
+  | `200 OK` | JSON   |
+
+
+
+
+#### Orders
+
+**Register an order**
+
+- Request
+
+  ```
+  POST /api/order
+  ```
+
+  - Body Parameters
+    - `UserId:string` (required, relation with User)
+    - `ProductId:string ` (required, relation with Product)
+
+- Answers
+
+  | Code                        | Answer                |
+  | --------------------------- | --------------------- |
+  | `200 OK`                    | JSON                  |
+  | `500 Internal Server Error` | Internal Server Error |
+
+
+
+
+
 ####  Feedback
 
 **Get feedback**
@@ -105,14 +177,17 @@ You need define `username` and `email` with their `env` variables `ADMIN_USERNAM
   GET /api/feedback
   ```
 
+  - Head Parameters
+    - `UserId:string` (required for authentication)
+    - `user-token:string` (required for authentication)
+
 - Answers
 
 | Code                        | Answer                |
 | --------------------------- | --------------------- |
 | `200 OK`                    | JSON                  |
+| `401 Unauthorized`          | Unauthorized          |
 | `500 Internal Server Error` | Internal Server error |
-
-
 
 **Register a feedback**
 
@@ -137,6 +212,7 @@ You need define `username` and `email` with their `env` variables `ADMIN_USERNAM
   | Code                        | Answer                |
   | --------------------------- | --------------------- |
   | `200 OK`                    | JSON                  |
+  | `401 Unauthorized`          | Unauthorized          |
   | `404 Not Found`             | Not Found             |
   | `500 Internal Server Error` | Internal Server Error |
 
@@ -166,6 +242,7 @@ You need define `username` and `email` with their `env` variables `ADMIN_USERNAM
   | Code                        | Answer                |
   | --------------------------- | --------------------- |
   | `200 OK`                    | JSON                  |
+  | `401 Unauthorized`          | Unauthorized          |
   | `404 Not Found`             | Not Found             |
   | `500 Internal Server Error` | Internal Server Error |
 
@@ -181,13 +258,18 @@ You need define `username` and `email` with their `env` variables `ADMIN_USERNAM
 
   - Path parameters
     - `:feedbackId:string` (required)
+  - Head Parameters
+    - `UserId:string` (required for authentication)
+    - `user-token:string` (required for authentication)
 
 - Answers
 
   | Code                        | Answer                |
   | --------------------------- | --------------------- |
   | `200 OK`                    | JSON                  |
+  | `401 Unauthorized`          | Unauthorized          |
   | `404 Not Found`             | Not Found             |
   | `500 Internal Server Error` | Internal Server Error |
 
-  
+
+
