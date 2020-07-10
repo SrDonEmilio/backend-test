@@ -16,9 +16,13 @@ module.exports = {
   },
   async registerFeedback(req, res) {
     try {
+      if(req.body.rate < 1 || req.body.rate > 5){
+        return res.json({message: "Rate out of range"})
+      }
       let feedback = await Feedback.create(req.body)
+      return res.json(feedback)
     } catch (err) {
-      
+      return res.status(500)
     }
   },
 
