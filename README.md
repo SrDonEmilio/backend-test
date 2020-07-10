@@ -91,7 +91,76 @@ This request only works the first time.
   }
   ```
 
+
+
+**Register an user**
+
+- Request
+
+  ```
+  POST /api/user
+  ```
+
+
+  - Body Parameters
+    - `username:integer` (required)
+    - `password:string ` (required)
+    - `email:string` (required)
+
+- Answers
+
+  | Code                        | Answer                |
+  | --------------------------- | --------------------- |
+  | `200 OK`                    | JSON                  |
+  | `500 Internal Server Error` | Internal Server Error |
+
   
+
+**Edit  an user**
+
+- Request
+
+  ```
+  PUT /api/user/:userId
+  ```
+
+  - Path parameters
+    - `:userId:string` (required)
+  - Body Parameters
+    - `username:string` (optional)
+    - `email:string ` (optional)
+    - `password:string ` (optional)
+
+- Answers
+
+  | Code                        | Answer                |
+  | --------------------------- | --------------------- |
+  | `200 OK`                    | JSON                  |
+  | `500 Internal Server Error` | Internal Server Error |
+
+  
+
+**Delete an user**
+
+- Request
+
+  ```
+  DELETE /api/user/:userId
+  ```
+
+  - Path parameters
+    - `:userId:string` (required)
+
+- Answers
+
+  | Code                        | Answer                |
+  | --------------------------- | --------------------- |
+  | `200 OK`                    | JSON                  |
+  | `500 Internal Server Error` | Internal Server Error |
+
+
+
+
 
 You need define `username` and `email` with their `env` variables `ADMIN_USERNAME` and `ADMIN_EMAIL`, respectively. Also you can define `password` with ADMIN_PASSWORD instead a random password.
 
