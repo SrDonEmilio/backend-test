@@ -20,7 +20,7 @@
     "jwt-simple": "^0.5.6",
     "moment": "^2.27.0",
     "mysql2": "^2.1.0",
-    "sequelize": "^6.3.0",
+    "sequelize": "^6.3.3",
     "uuid": "^8.2.0"
   },
   "devDependencies": {
